@@ -15,7 +15,7 @@ import Footer from './Footer';
 import Header from './Header';
 import Context from './MenuContext';
 import SiderMenu from '@/components/SiderMenu';
-
+import Test from '@/components/test'
 import styles from './BasicLayout.less';
 
 const { Content } = Layout;
@@ -50,6 +50,26 @@ class BasicLayout extends React.PureComponent {
     super(props);
     this.getPageTitle = memoizeOne(this.getPageTitle);
     this.matchParamsPath = memoizeOne(this.matchParamsPath, isEqual);
+    this.state = {
+        num: [0],
+    }
+  }
+
+  control(step){
+      let { num } =  this.state;
+    if(step){
+        let len =  num.length-1< 0?0:num.length-1;
+      let arrayNum =  num[ len ]+step?num[ len ]+step:0;
+      num.push(arrayNum);
+    }
+
+    if(!step&&num.length){
+        num.splice(num.length-1,1);
+    }
+
+    this.setState({
+        num:num
+    })
   }
 
   componentDidMount() {
@@ -182,6 +202,7 @@ class BasicLayout extends React.PureComponent {
           />
           <Content className={styles.content} style={contentStyle}>
             <Authorized authority={routerConfig} noMatch={<p>Exception403</p>}>
+              <Test num={this.state.num} control={this.control.bind(this)}/>
               {children}
             </Authorized>
           </Content>

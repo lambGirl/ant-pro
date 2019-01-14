@@ -11,11 +11,17 @@ import styles from './Header.less';
 const { Header } = Layout;
 
 class HeaderView extends PureComponent {
-  state = {
-    visible: true,
-  };
+    constructor(){
+        super();
+
+        this.state = {
+            visible: true,
+        };
+       // console.log("constructor------------------");
+    }
 
   static getDerivedStateFromProps(props, state) {
+      //console.log("getDerivedStateFromProps",props, state);
     if (!props.autoHideHeader && !state.visible) {
       return {
         visible: true,
@@ -26,10 +32,12 @@ class HeaderView extends PureComponent {
 
   componentDidMount() {
     document.addEventListener('scroll', this.handScroll, { passive: true });
+    //console.log("componentDidMount");
   }
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.handScroll);
+    //console.log("componentWillUnmount");
   }
 
   getHeadWidth = () => {

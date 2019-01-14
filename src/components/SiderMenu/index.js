@@ -3,6 +3,9 @@ import { Drawer } from 'antd';
 import SiderMenu from './SiderMenu';
 import { getFlatMenuKeys } from './SiderMenuUtils';
 
+/**
+ * memo: 让函数式组件有PureComponent的特性(浅比较)
+ */
 const SiderMenuWrapper = React.memo(props => {
   const { isMobile, menuData, collapsed, onCollapse } = props;
   const flatMenuKeys = getFlatMenuKeys(menuData);
