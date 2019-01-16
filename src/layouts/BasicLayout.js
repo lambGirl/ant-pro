@@ -17,6 +17,7 @@ import Context from './MenuContext';
 import SiderMenu from '@/components/SiderMenu';
 import Test from '@/components/test'
 import styles from './BasicLayout.less';
+import { List } from 'immutable';
 
 const { Content } = Layout;
 
@@ -57,16 +58,16 @@ class BasicLayout extends React.PureComponent {
 
   control(step){
       let { num } =  this.state;
+      let arrayNew =  List(num);
     if(step){
         let len =  num.length-1< 0?0:num.length-1;
-      let arrayNum =  num[ len ]+step?num[ len ]+step:0;
-      num.push(arrayNum);
+       let arrayNum =  num[ len ]+step?num[ len ]+step:0;
+        num = arrayNew.set(num.length, arrayNum).toJS();
     }
 
     if(!step&&num.length){
-        num.splice(num.length-1,1);
+        num =  arrayNew.pop().toJS();
     }
-
     this.setState({
         num:num
     })

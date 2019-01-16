@@ -1,5 +1,5 @@
 module.exports = {
-  parser: 'babel-eslint',
+  /*parser: 'babel-eslint',
   extends: ['airbnb', 'prettier', 'plugin:compat/recommended'],
   env: {
     browser: true,
@@ -24,7 +24,7 @@ module.exports = {
       2,
       {
         optionalDependencies: true,
-        devDependencies: ['**/tests/**.js', '/mock/**.js', '**/**.test.js'],
+        devDependencies: ['**!/tests/!**.js', '/mock/!**.js', '**!/!**.test.js'],
       },
     ],
     'jsx-a11y/no-noninteractive-element-interactions': 0,
@@ -35,5 +35,5 @@ module.exports = {
   },
   settings: {
     polyfills: ['fetch', 'promises', 'url'],
-  },
+  },*/
 };
