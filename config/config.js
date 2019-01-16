@@ -59,7 +59,7 @@ export default {
           component: './Welcome',
         },
         {
-          path: 'https://github.com/umijs/umi-blocks/tree/master/ant-design-pro',
+          path: '/immu',
           name: 'more-blocks',
           icon: 'block',
         },

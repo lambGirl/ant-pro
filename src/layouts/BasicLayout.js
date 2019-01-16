@@ -15,9 +15,8 @@ import Footer from './Footer';
 import Header from './Header';
 import Context from './MenuContext';
 import SiderMenu from '@/components/SiderMenu';
-import Test from '@/components/test'
 import styles from './BasicLayout.less';
-import { List } from 'immutable';
+
 
 const { Content } = Layout;
 
@@ -51,33 +50,16 @@ class BasicLayout extends React.PureComponent {
     super(props);
     this.getPageTitle = memoizeOne(this.getPageTitle);
     this.matchParamsPath = memoizeOne(this.matchParamsPath, isEqual);
-    this.state = {
-        num: [0],
-    }
   }
 
-  control(step){
-      let { num } =  this.state;
-      let arrayNew =  List(num);
-    if(step){
-        let len =  num.length-1< 0?0:num.length-1;
-       let arrayNum =  num[ len ]+step?num[ len ]+step:0;
-        num = arrayNew.set(num.length, arrayNum).toJS();
-    }
 
-    if(!step&&num.length){
-        num =  arrayNew.pop().toJS();
-    }
-    this.setState({
-        num:num
-    })
-  }
 
   componentDidMount() {
     const {
       dispatch,
       route: { routes, authority },
     } = this.props;
+
     dispatch({
       type: 'user/fetchCurrent',
     });
@@ -203,7 +185,6 @@ class BasicLayout extends React.PureComponent {
           />
           <Content className={styles.content} style={contentStyle}>
             <Authorized authority={routerConfig} noMatch={<p>Exception403</p>}>
-              <Test num={this.state.num} control={this.control.bind(this)}/>
               {children}
             </Authorized>
           </Content>
