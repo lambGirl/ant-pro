@@ -34,6 +34,7 @@ export default class Immu extends PureComponent{
 
 
     render = ()=>{
+        console.log("immute........................");
         return <div>
             sdfsdf
             <Test num={this.state.num} control={this.control.bind(this)}/>
