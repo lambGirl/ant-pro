@@ -1,6 +1,5 @@
 import React,{PureComponent } from 'react';
 import Test from '@/components/test/index'
-import { List } from 'immutable';
 
 export default class Immu extends PureComponent{
     /**
@@ -34,9 +33,7 @@ export default class Immu extends PureComponent{
 
 
     render = ()=>{
-        console.log("immute........................");
-        return <div>
-            sdfsdf
+        return <div style={{"height":'100%','width':'100%'}}>
             <Test num={this.state.num} control={this.control.bind(this)}/>
         </div>
     }
